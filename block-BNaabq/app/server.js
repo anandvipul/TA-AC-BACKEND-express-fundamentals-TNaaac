@@ -5,10 +5,14 @@ const cookieParser = require('cookie-parser');
 
 let app = express();
 
-app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use(express.static(__dirname + "/public"));
 
-app.use((req, res, next) => {
-    req.cookies.username = "You";
+
+
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
 });
 
 
