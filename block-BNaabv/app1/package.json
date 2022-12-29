@@ -1,0 +1,8 @@
+{
+   "name": "app1",
+   "version": "1.0.0",
+   "description": "",
+   "dependencies": {
+      "express": "^4.10.1"
+   }
+}
