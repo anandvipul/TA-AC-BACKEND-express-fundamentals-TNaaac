@@ -16,7 +16,15 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
     let store = "";
     console.log("Hi");
-    console.log(req);
+    req.on("data", (chunk) => {
+        store += chunk;
+    });
+
+    req.on("end", () => {
+        // console.log(store);
+        req.json = store;
+        console.log(req.json);
+    });
     next();
 });
 
@@ -24,6 +32,7 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => {
     res.send("Hello There");
+    console.log(req.body);
 });
 
 
